@@ -1,0 +1,129 @@
+:root {
+    --bs-primary: #800000; /* Tamno crvena primarna boja */
+    --bs-secondary: #DC3545; /* Bootstrap crvena boja (za hover) */
+}
+
+/* Navbar stilovi */
+.navbar-nav .nav-link {
+    position: relative;
+    color: rgba(255, 255, 255, 0.75); /* Podrazumevana boja teksta */
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #fff; /* Boja teksta pri hoveru */
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--bs-primary);
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 100%;
+}
+
+/* Hero sekcija */
+.hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 70vh;
+    /* Ako zelis sliku umesto videa: */
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero .overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+/* Dugme u Hero sekciji */
+.hero .btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.hero .btn-primary:hover,
+.hero .btn-primary:focus {
+    background-color: var(--bs-secondary); /* Koristi sekundarnu boju za hover */
+    border-color: var(--bs-secondary);
+}
+
+/* Kartice albuma */
+.card-img-top {
+    aspect-ratio: 1 / 1;    /* Kvadratni format slike */
+    object-fit: cover;      /* Da lepo popuni prostor */
+    width: 100%;            /* Puna širina */
+}
+
+.card-wrapper {
+    transition: opacity 0.4s ease, transform 0.4s ease, margin 0.4s ease, height 0.4s ease;
+    opacity: 1;
+    transform: translateY(0);
+    margin-bottom: 1.5rem; /* Veća margina između kartica */
+    height: auto;
+    overflow: hidden;
+}
+
+.card-wrapper.hide {
+    opacity: 0;
+    transform: translateY(20px);
+    height: 0 !important; /* Sakrij visinu i marginu za animaciju */
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    pointer-events: none; /* Onemogući klikove */
+    visibility: hidden; /* Učini nevidljivim */
+}
+
+/* Sistem ocenjivanja (zvezdice) */
+.rating {
+    display: inline-block;
+    font-size: 2.5em; /* Veličina zvezdica */
+    direction: rtl; /* Okreće vizuelni redosled zvezdica za lakše stilizovanje */
+}
+
+.rating > input {
+    display: none; /* Sakrij radio dugmad */
+}
+
+.rating > label {
+    padding: 0 2px;
+    color: #ccc; /* Podrazumevana siva boja */
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.rating > label:before {
+    content: '★'; /* Unicode znak zvezdice */
+}
+
+/* Hover efekat (popunjava od odabrane ka levo) */
+.rating > label:hover,
+.rating > label:hover ~ label {
+    color: gold;
+}
+
+/* Selektovano stanje (popunjava od odabrane ka levo) */
+.rating > input:checked ~ label {
+    color: gold;
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" 
+          integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    <title id="albumPageTitle">Detalji Albuma</title>
+    
+    <link rel="icon" href="slike/1536281106-clipart-lg.png" type="image/x-icon" />
+
+    <style>
+        /* Animirano crveno podvlačenje linkova u navbaru umesto plavog */
+        .navbar-dark .navbar-nav .nav-link {
+            position: relative;
+            color: #fff;
+        }
+
+        .navbar-dark .navbar-nav .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: #800000;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover::after,
+        .navbar-dark .navbar-nav .nav-link:focus::after,
+        .navbar-dark .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="slike/1536281106-clipart-lg.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2" />
+                Top Albumi
+            </a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Početna</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="onama.html">O nama</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://music.apple.com/us/playlist/top-100-global/pl.d25f5d1181894928af76c85c967f8f31">Apple Top 100</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <div id="albumDetails" class="row">
+            <div class="col-md-4">
+                <img id="albumCover" src="" class="img-fluid rounded shadow" alt="Omot albuma">
+            </div>
+            <div class="col-md-8">
+                <h1 id="albumTitle" class="display-4 mb-2"></h1>
+                <h2 id="albumArtist" class="text-muted mb-4"></h2>
+
+                <div class="mb-4">
+                    <h4>Oceni album:</h4>
+                    <div id="ratingStars" class="rating">
+                        <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 zvezdica"></label>
+                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 zvezdice"></label>
+                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 zvezdice"></label>
+                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 zvezdice"></label>
+                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 zvezdica"></label>
+                    </div>
+                    <p id="currentRatingDisplay" class="mt-2 text-muted"></p>
+                </div>
+
+                <h4 class="mt-5">Biografija izvođača:</h4>
+                <p id="artistBio"></p>
+
+                <h4 class="mt-4">Lista pesama:</h4>
+                <ul id="tracklist" class="list-group list-group-flush">
+                </ul>
+                <div id="spotifyEmbed" class="mt-4">
+                </div>
+            </div>
+        </div>
+        <div id="notFound" class="text-center d-none">
+            <h2 class="display-4">Album nije pronađen!</h2>
+            <p class="lead">Proverite da li ste uneli ispravan link ili se vratite na <a href="index.html">početnu stranicu</a>.</p>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Top Albumi</h5>
+                    <p class="mb-0">Najbolja kolekcija muzičkih remek-dela</p>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Linkovi</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Početna</a></li>
+                        <li><a href="#" class="text-white">O nama</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Kontakt</h5>
+                    <ul class="list-unstyled">
+                        <li>Email: urosradovnovic@tehnickacacak.edu.rs</li>
+                        <li>Telefon: +381 656685964</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <p class="mb-0 text-center">© 2025 Top Albumi. Sva prava zadržana.</p>
+        </div>
+    </footer>
+
+    <script src="album-details.js"></script>
+</body>
+</html>
